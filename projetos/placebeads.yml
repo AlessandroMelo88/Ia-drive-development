@@ -1,0 +1,10 @@
+# Manifesto do projeto placebeads. Globais (skills/global/*) já chegam pelo perfil: não listar aqui.
+# Só documentação por enquanto.
+projeto: placebeads
+caminho: ~/develop/server/wordpress/placebeads
+stack: só Docs/
+deploy: -
+
+skills:   # caminhos relativos a skills/; ligados em <projeto>/.claude/skills por bin/instalar.sh
+
+locais:   # skills que vivem no repo do próprio projeto (só inventário; o instalar.sh não mexe)

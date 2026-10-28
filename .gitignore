@@ -1,0 +1,4 @@
+.DS_Store
+node_modules/
+# Cópias de terceiros só para comparação (ver pendente-decisao/README.md)
+/pendente-decisao/*/

@@ -1,0 +1,21 @@
+# Skills de terceiros: NÃO são versionadas aqui. Registro de origem para reinstalar em máquina nova.
+# Fontes: ~/.agents/.skill-lock.json (CLI `npx skills`) e ~/.claude/skills/SKILLS-ORIGEM.tsv.
+# Instalar: npx skills add <origem>   (o CLI pergunta para quais ferramentas: Claude, Codex, Gemini)
+#
+# As skills `synced/` (docx, pdf, pptx, xlsx, skill-creator...) vêm do Claude.ai da organização e
+# são gerenciadas pela plataforma: não mexer.
+
+externas:
+  - usestrix/strix                           # api-security-testing, application-security-testing, ci-security-scanning-with-strix, find-security-vulnerabilities-in-code, fix-security-vulnerabilities-with-strix, managed-pentesting-with-strix, owasp-top-10-testing, penetration-testing-with-strix, web-app-penetration-testing
+  - nextlevelbuilder/ui-ux-pro-max-skill     # banner-design, brand, design, design-system, slides, ui-styling, ui-ux-pro-max
+  - testdino-hq/playwright-skill             # playwright-skill (link duplicado: playwright)
+  - intellectronica/agent-skills             # context7
+  - vercel-labs/skills                       # find-skills
+  - vercel-labs/agent-skills@063bee9         # web-design-guidelines
+  - microsoft/playwright-cli@b1a5903         # playwright-cli
+  - Leonxlnx/taste-skill@12af471             # taste-skill
+  - Leonxlnx/imagegen-skills@beb16b0         # image-to-code
+  - VoltAgent/awesome-design-md@3b60532      # awesome-design
+  - impeccable                               # npx impeccable (versão 4.0.4) — ver pendente-decisao/
+  - atlassian twg                            # twg, twg-* (13) — ver pendente-decisao/
+  - graphify                                 # ~/.claude/skills/graphify (citada em regras/CLAUDE-global.md)

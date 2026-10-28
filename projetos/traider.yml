@@ -1,0 +1,13 @@
+# Manifesto do projeto traider. Globais (skills/global/*) já chegam pelo perfil: não listar aqui.
+# Acrescentar deploy/deploy-github-actions-ssh quando for para o servidor.
+projeto: traider
+caminho: ~/develop/server/wordpress/traider
+stack: django (python)
+deploy: sem workflow
+
+skills:   # caminhos relativos a skills/; ligados em <projeto>/.claude/skills por bin/instalar.sh
+
+locais:   # skills que vivem no repo do próprio projeto (só inventário; o instalar.sh não mexe)
+  - b3-analise-tecnica
+  - compliance-cvm
+  - traider-quant-dev

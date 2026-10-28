@@ -1,0 +1,82 @@
+name: Deploy
+
+# Build no runner (Linux), artefato por ssh, troca de release no servidor. Só publica o que mudou
+# (web/ e backend/ comparados com o último sha publicado do ambiente). Voltar = ativar o sha anterior.
+#
+# Configuração única (Settings > Environments): criar `stage` e `prod`. Em cada um, ou como segredos
+# do repositório:
+#   DEPLOY_SSH_KEY     chave privada ssh de deploy (exclusiva do CI)
+#   DEPLOY_KNOWN_HOSTS saída de `ssh-keyscan -t ed25519 <host>` (conferida antes)
+#   DEPLOY_SSH         destino, ex.: usuario@host
+on:
+  workflow_dispatch:
+    inputs:
+      ambiente:
+        description: Onde publicar
+        type: choice
+        options: [stage, prod]
+        default: stage
+      escopo:
+        description: O que publicar
+        type: choice
+        options: [tudo-que-mudou, so-web, so-backend]
+        default: tudo-que-mudou
+      forcar:
+        description: Publicar mesmo sem mudança desde a última vez
+        type: boolean
+        default: false
+      confirmar:
+        description: 'Só para prod: digite PUBLICAR'
+        type: string
+        default: ''
+
+concurrency:
+  group: deploy-${{ inputs.ambiente }}
+  cancel-in-progress: false
+
+jobs:
+  # CI antes do deploy: vermelho = não publica. Remova se o projeto ainda não tem ci.yml reutilizável
+  # (o ci.yml precisa de `on: workflow_call`).
+  ci:
+    uses: ./.github/workflows/ci.yml
+
+  deploy:
+    needs: ci
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.ambiente }}
+    steps:
+      - name: Confirmação de produção
+        if: inputs.ambiente == 'prod' && inputs.confirmar != 'PUBLICAR'
+        run: echo "Para publicar em prod, preencha confirmar = PUBLICAR." && exit 1
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # o publicar.sh compara com o último sha publicado
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - name: Chave ssh
+        env:
+          CHAVE: ${{ secrets.DEPLOY_SSH_KEY }}
+          HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          ALVO: ${{ secrets.DEPLOY_SSH }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$CHAVE" > ~/.ssh/deploy_key && chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$HOSTS" > ~/.ssh/known_hosts
+          printf 'Host deploy\n  HostName %s\n  User %s\n  IdentityFile ~/.ssh/deploy_key\n  IdentitiesOnly yes\n  StrictHostKeyChecking yes\n  ConnectTimeout 15\n' \
+            "${ALVO#*@}" "${ALVO%@*}" > ~/.ssh/config
+          ssh -o BatchMode=yes deploy 'echo conectado'
+      - name: Publicar
+        env:
+          DEPLOY_SSH: deploy
+          AMBIENTE: ${{ inputs.ambiente }}
+          ESCOPO: ${{ inputs.escopo }}
+          FORCAR: ${{ inputs.forcar }}
+        run: |
+          args="$AMBIENTE --sim"
+          [ "$ESCOPO" = "so-web" ] && args="$args --so-web"
+          [ "$ESCOPO" = "so-backend" ] && args="$args --so-backend"
+          [ "$FORCAR" = "true" ] && args="$args --forcar"
+          ./bin/publicar.sh $args

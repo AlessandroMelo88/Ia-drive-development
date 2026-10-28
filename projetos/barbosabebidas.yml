@@ -1,0 +1,12 @@
+# Manifesto do projeto barbosabebidas. Globais (skills/global/*) já chegam pelo perfil: não listar aqui.
+# Deploy hoje roda à mão no servidor.
+projeto: barbosabebidas
+caminho: ~/develop/server/wordpress/barbosabebidas
+stack: next + laravel (backoffice) + docker
+deploy: manual: bin/deploy.sh no servidor (migrar para Actions)
+
+skills:   # caminhos relativos a skills/; ligados em <projeto>/.claude/skills por bin/instalar.sh
+  - deploy/deploy-github-actions-ssh
+  - stack/web/validacao-visual
+
+locais:   # skills que vivem no repo do próprio projeto (só inventário; o instalar.sh não mexe)

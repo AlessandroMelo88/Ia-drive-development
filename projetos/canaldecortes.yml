@@ -1,0 +1,13 @@
+# Manifesto do projeto canaldecortes. Globais (skills/global/*) já chegam pelo perfil: não listar aqui.
+# gitflow local prevalece sobre a global; finalizar-e-deploy pode passar a delegar o deploy para a skill comum.
+projeto: canaldecortes
+caminho: ~/develop/server/wordpress/canaldecortes
+stack: python + laravel (painel) + docker
+deploy: ci.yml + deploy.sh (sem workflow de deploy ainda)
+
+skills:   # caminhos relativos a skills/; ligados em <projeto>/.claude/skills por bin/instalar.sh
+  - deploy/deploy-github-actions-ssh
+
+locais:   # skills que vivem no repo do próprio projeto (só inventário; o instalar.sh não mexe)
+  - finalizar-e-deploy
+  - gitflow

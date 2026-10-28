@@ -1,0 +1,12 @@
+# Manifesto do projeto alessandro. Globais (skills/global/*) já chegam pelo perfil: não listar aqui.
+# Skills pessoais; hoje ~/.claude/skills/{busca-vagas,post-tech} são links para cá.
+projeto: alessandro
+caminho: ~/develop/server/wordpress/alessandro
+stack: node (portfólio, painel, scripts)
+deploy: sem workflow
+
+skills:   # caminhos relativos a skills/; ligados em <projeto>/.claude/skills por bin/instalar.sh
+
+locais:   # skills que vivem no repo do próprio projeto (só inventário; o instalar.sh não mexe)
+  - busca-vagas
+  - post-tech

@@ -1,0 +1,13 @@
+# Manifesto do projeto Jeferson-apostas. Globais (skills/global/*) já chegam pelo perfil: não listar aqui.
+# escopo-comercial local (específica do cliente) prevalece sobre a global de mesmo nome.
+projeto: Jeferson-apostas
+caminho: ~/develop/server/wordpress/Jeferson-apostas
+stack: laravel + node
+deploy: github-actions-ssh (ssh + deploy.sh no servidor + backup Postgres)
+
+skills:   # caminhos relativos a skills/; ligados em <projeto>/.claude/skills por bin/instalar.sh
+  - deploy/deploy-github-actions-ssh
+  - stack/web/validacao-visual
+
+locais:   # skills que vivem no repo do próprio projeto (só inventário; o instalar.sh não mexe)
+  - escopo-comercial
