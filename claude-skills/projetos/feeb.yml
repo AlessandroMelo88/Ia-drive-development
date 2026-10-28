@@ -1,0 +1,11 @@
+# Manifesto do projeto feeb. Globais (skills/global/*) já chegam pelo perfil: não listar aqui.
+# Legado: globais + validacao-visual; deploy quando houver plano.
+projeto: feeb
+caminho: ~/develop/server/wordpress/feeb
+stack: php legado + node (gulp)
+deploy: sem workflow
+
+skills:   # caminhos relativos a skills/; ligados em <projeto>/.claude/skills por bin/instalar.sh
+  - stack/web/validacao-visual
+
+locais:   # skills que vivem no repo do próprio projeto (só inventário; o instalar.sh não mexe)

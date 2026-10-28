@@ -1,0 +1,54 @@
+# Skills de terceiros VERSIONADAS em skills/externas/<nome>/. Este arquivo registra de onde cada uma
+# veio, para atualizar depois. Fontes originais: ~/.agents/.skill-lock.json (CLI `npx skills`) e
+# skills/externas/SKILLS-ORIGEM.tsv.
+#
+# Atualizar uma externa (detalhes no README, seção "Skills externas"):
+#   1. reinstale pelo instalador dela (ex.: npx skills add usestrix/strix);
+#   2. bin/importar-externas.sh <nome>   copia a versão nova para skills/externas/<nome>/;
+#   3. revise o git diff, ajuste a versão aqui, commite;  4. bin/instalar-perfis.sh religa.
+#
+# Formato: nome | origem | versão | fonte local para importar (opcional; padrão: primeira cópia
+# fora do repo encontrada nos destinos de perfis.yml, na ordem de lá).
+# As `synced/` (Claude.ai) e as skills de plugins NÃO entram aqui.
+
+externas:
+  - api-security-testing | usestrix/strix | lock:b8d6fc7 2026-09-04
+  - application-security-testing | usestrix/strix | lock:d6eed14 2026-09-04
+  - ci-security-scanning-with-strix | usestrix/strix | lock:7df0044 2026-09-04
+  - find-security-vulnerabilities-in-code | usestrix/strix | lock:c1074a1 2026-09-04
+  - fix-security-vulnerabilities-with-strix | usestrix/strix | lock:4659be6 2026-09-04
+  - managed-pentesting-with-strix | usestrix/strix | lock:6f86911 2026-09-04
+  - owasp-top-10-testing | usestrix/strix | lock:5dd695a 2026-09-04
+  - penetration-testing-with-strix | usestrix/strix | lock:35ff5b6 2026-09-04
+  - web-app-penetration-testing | usestrix/strix | lock:1d4f2c5 2026-09-04
+  - banner-design | nextlevelbuilder/ui-ux-pro-max-skill | lock:8bb75e7 2026-09-04
+  - brand | nextlevelbuilder/ui-ux-pro-max-skill | lock:409f8eb 2026-09-04
+  - design | nextlevelbuilder/ui-ux-pro-max-skill | lock:94b8cef 2026-09-04
+  - design-system | nextlevelbuilder/ui-ux-pro-max-skill | lock:4b60947 2026-09-04
+  - slides | nextlevelbuilder/ui-ux-pro-max-skill | lock:d08d6ef 2026-09-04
+  - ui-styling | nextlevelbuilder/ui-ux-pro-max-skill | lock:c910278 2026-09-04
+  - ui-ux-pro-max | nextlevelbuilder/ui-ux-pro-max-skill | lock:76f0499 2026-09-04
+  - playwright-skill | testdino-hq/playwright-skill | lock:d3be9ca 2026-09-04
+  - context7 | intellectronica/agent-skills | lock:c7ab574 2026-09-04
+  - find-skills | vercel-labs/skills | lock:76a98a2 2026-08-12
+  - web-design-guidelines | vercel-labs/agent-skills@063bee9 | SKILLS-ORIGEM.tsv
+  - playwright-cli | microsoft/playwright-cli@b1a5903 | SKILLS-ORIGEM.tsv
+  - taste-skill | Leonxlnx/taste-skill@12af471 | SKILLS-ORIGEM.tsv
+  - image-to-code | Leonxlnx/imagegen-skills@beb16b0 | SKILLS-ORIGEM.tsv
+  - awesome-design | VoltAgent/awesome-design-md@3b60532 | SKILLS-ORIGEM.tsv
+  - impeccable | npx impeccable (variante Claude) | 4.0.4 | ~/.claude/skills/impeccable
+  - impeccable-agents | npx impeccable (variante Codex/Gemini) | 4.0.4 | ~/.agents/skills/impeccable
+  - graphify | graphify (instalador próprio) | 0.9.30
+  - twg | Atlassian Teamwork Graph (instalador twg) | 1.3.6
+  - twg-agentic-search | Atlassian Teamwork Graph (instalador twg) | 1.3.6
+  - twg-artifacts | Atlassian Teamwork Graph (instalador twg) | 1.3.6
+  - twg-code-review | Atlassian Teamwork Graph (instalador twg) | 1.3.6
+  - twg-confluence | Atlassian Teamwork Graph (instalador twg) | 1.3.6
+  - twg-context-discovery | Atlassian Teamwork Graph (instalador twg) | 1.3.6
+  - twg-engineering-work | Atlassian Teamwork Graph (instalador twg) | 1.3.6
+  - twg-jira | Atlassian Teamwork Graph (instalador twg) | 1.3.6
+  - twg-jira-resolve-merged-work | Atlassian Teamwork Graph (instalador twg) | 1.3.6
+  - twg-operational-health | Atlassian Teamwork Graph (instalador twg) | 1.3.6
+  - twg-responsibility-routing | Atlassian Teamwork Graph (instalador twg) | 1.3.6
+  - twg-space-creation | Atlassian Teamwork Graph (instalador twg) | 1.3.6
+  - twg-status-rollups | Atlassian Teamwork Graph (instalador twg) | 1.3.6

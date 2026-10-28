@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/
+__pycache__/
+*.pyc
+.coverage
+# metadado local do instalador twg (caminho e horário da instalação)
+.twg-install.json

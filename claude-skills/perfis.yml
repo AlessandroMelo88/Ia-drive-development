@@ -1,0 +1,48 @@
+# Para onde vão as skills globais (skills/global/*) e as regras globais (regras/CLAUDE-global.md).
+# Lido por bin/instalar-perfis.sh e bin/status.sh. Sem caminho fixo de máquina: `~` e `*` são
+# resolvidos na hora, na máquina onde o script roda.
+#
+# Formato simples (o script não usa parser de YAML): só listas "  - valor", comentário com "#".
+
+skills_destinos:
+  # Claude Code, perfil padrão. Criado se faltar.
+  - ~/.claude/skills
+  # Demais perfis do Claude Code (CLAUDE_CONFIG_DIR=~/.claude-<nome>). Só conta como perfil a pasta
+  # que tem projects/, history.jsonl ou skills/. Perfil novo entra sozinho na próxima instalação.
+  - ~/.claude-*/skills
+  # Codex CLI e Gemini CLI: os dois leem o padrão aberto de Agent Skills em ~/.agents/skills
+  # (Gemini confirmado com `gemini skills list` 0.64; Codex pela documentação). Um só destino evita
+  # skill duplicada: o Gemini também lê ~/.gemini/skills, e o Codex o legado ~/.codex/skills.
+  - ~/.agents/skills
+
+regras_destinos:
+  # Regras globais (checkpoint, testes de regressão, autoria de commits). Só instala se a pasta do
+  # CLI existir. Os perfis ~/.claude-<nome> recebem as regras de ~/.claude/CLAUDE.md porque o Claude
+  # Code lê o .claude/CLAUDE.md das pastas acima do projeto; um link neles duplicaria a leitura.
+  - ~/.claude/CLAUDE.md
+  - ~/.codex/AGENTS.md
+  - ~/.gemini/GEMINI.md
+
+ignorar:
+  # Pastas ~/.claude-* que não são perfil do Claude Code.
+  - ~/.claude-mem
+
+globais:
+  # Categorias de skills/ que vão para TODOS os destinos de skills_destinos.
+  - global
+  - externas
+
+nao_ligar:
+  # Pastas que não viram link com o próprio nome (só entram por sobreposicoes:).
+  - impeccable-agents
+
+sobreposicoes:
+  # destino exato = skill do repo. O impeccable tem uma variante por ferramenta: Codex e Gemini
+  # (~/.agents) recebem a variante agents; os perfis do Claude Code recebem skills/externas/impeccable.
+  - ~/.agents/skills/impeccable = externas/impeccable-agents
+
+aliases:
+  # nome-do-link = skill. Nome extra para a mesma pasta, só nos perfis do Claude Code
+  # (em ~/.agents viraria skill duplicada para Codex/Gemini).
+  - strix = penetration-testing-with-strix
+  - playwright = playwright-skill
