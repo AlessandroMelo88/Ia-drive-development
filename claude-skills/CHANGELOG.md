@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+- Adicionada a skill externa karpathy-guidelines (multica-ai/andrej-karpathy-skills, commit 2c60614) aos destinos globais de skills.
+
 Uma linha por mudança de skill. Mudança de comportamento ganha tag (`vX.Y.Z`).
 
 ## v1.1.0 — 2026-10-28

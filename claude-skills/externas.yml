@@ -12,6 +12,7 @@
 # As `synced/` (Claude.ai) e as skills de plugins NÃO entram aqui.
 
 externas:
+  - karpathy-guidelines | multica-ai/andrej-karpathy-skills | 2c60614 (2026-04-20)
   - api-security-testing | usestrix/strix | lock:b8d6fc7 2026-09-04
   - application-security-testing | usestrix/strix | lock:d6eed14 2026-09-04
   - ci-security-scanning-with-strix | usestrix/strix | lock:7df0044 2026-09-04
